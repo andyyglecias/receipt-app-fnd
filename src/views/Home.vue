@@ -154,12 +154,12 @@
     <!-- Categories List Page -->
       <section class="categories-list main-categories-list">
          <div class="container">
-            <div v-for="receipt in category.receipts" id="Restaurant" class="row">
+            <div v-for="receipt in category.name" id="Restaurant" class="row">
                <div class="col-lg-3 col-md-3 col-sm-3">
                   <div class="widget blue-widget">
                      <div class="widget-header">
                         <small>98,156 Ads</small>
-                        <h1><i class="fa fa-glass shortcut-icon icon-blue"></i>{{ category.name }}</h1>
+                        <h1><i class="fa fa-glass shortcut-icon icon-blue"></i>{{ receipt.name }}</h1>
                      </div>
                      <div class="widget-body">
                         <ul class="trends">
@@ -185,7 +185,7 @@
                                  <img alt="" src="images/categories/restaurant/1.png" class="img-responsive img-center">
                                  <div class="item-title">
                                     <a href="single.html">
-                                       <h4>{{ receipt.merchant }}</h4>
+                                       <h4></h4>
                                     </a>
                                     <h3>$ 64.5000</h3>
                                  </div>
