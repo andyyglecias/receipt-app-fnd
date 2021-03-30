@@ -154,7 +154,7 @@
     <!-- Categories List Page -->
       <section class="categories-list main-categories-list">
          <div class="container">
-            <div v-for="category in categories" id="Restaurant" class="row">
+            <div v-for="receipt in category.receipts" id="Restaurant" class="row">
                <div class="col-lg-3 col-md-3 col-sm-3">
                   <div class="widget blue-widget">
                      <div class="widget-header">
@@ -185,7 +185,7 @@
                                  <img alt="" src="images/categories/restaurant/1.png" class="img-responsive img-center">
                                  <div class="item-title">
                                     <a href="single.html">
-                                       <h4>There are many variations</h4>
+                                       <h4>{{ receipt.merchant }}</h4>
                                     </a>
                                     <h3>$ 64.5000</h3>
                                  </div>
@@ -216,33 +216,28 @@ var axios = require("axios");
 export default {
   data: function() {
     return {
-      categories: [],
-      receipts: [],
+      category: {},
       searchFilter: "",
       categoryUser: [],
-      newSpendingCap: "",
- 
-
+      newSpendingCap: ""
     };
   },
   created: function() {
     axios.get("http://localhost:3000/api/categories/").then(
       function(response) {
         console.log(response.data);
-        this.categories = response.data.name;
+        this.category = response.data;
       }.bind(this)
     );
     axios.get("http://localhost:3000/api/receipts/").then(
       function(response) {
         console.log(response.data);
-        this.receipts = response.data.merchant;
+        this.category.receipts = response.data;
       }.bind(this)
     );
   },
   methods: {
-    updateSpendingCap: function(category) {
-      console.log("updateSpendingCap", category);
-    }
+    
   },
   
   computed: {}
