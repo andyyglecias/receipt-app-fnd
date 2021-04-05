@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-    <!-- Categories Page Search-->
+    <!-- Preloder -->
+    <div id="preloader"></div>
+      <!-- End Preloder -->
+      <!-- Categories Page Search-->
       <section class="categories-page-search">
          <div class="container">
             <div class="row">
@@ -154,12 +157,12 @@
     <!-- Categories List Page -->
       <section class="categories-list main-categories-list">
          <div class="container">
-            <div v-for="receipt in category.name" id="Restaurant" class="row">
+            <div id="Restaurant" class="row">
                <div class="col-lg-3 col-md-3 col-sm-3">
                   <div class="widget blue-widget">
                      <div class="widget-header">
                         <small>98,156 Ads</small>
-                        <h1><i class="fa fa-glass shortcut-icon icon-blue"></i>{{ receipt.name }}</h1>
+                        <h1><i class="fa fa-glass shortcut-icon icon-blue"></i> Restaurant</h1>
                      </div>
                      <div class="widget-body">
                         <ul class="trends">
@@ -185,10 +188,81 @@
                                  <img alt="" src="images/categories/restaurant/1.png" class="img-responsive img-center">
                                  <div class="item-title">
                                     <a href="single.html">
-                                       <h4></h4>
+                                       <h4>There are many variations</h4>
                                     </a>
                                     <h3>$ 64.5000</h3>
                                  </div>
+                              </div>
+                              <div class="item-meta">
+                                 <ul>
+                                    <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 AM</li>
+                                    <li class="item-cat"><i class="fa fa-glass"></i> <a href="#">Restaurant</a> , <a href="#">Cafe</a></li>
+                                    <li class="item-location"><a href="#"><i class="fa fa-map-marker"></i> Buffalo </a></li>
+                                    <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="item">
+                           <div class="item-ads-grid icon-blue">
+                              <div class="item-img-grid">
+                                 <img alt="" src="images/categories/restaurant/2.png" class="img-responsive img-center">
+                                 <div class="item-title">
+                                    <a href="single.html">
+                                       <h4>There are many variations</h4>
+                                    </a>
+                                    <h3>$ 64.5000</h3>
+                                 </div>
+                              </div>
+                              <div class="item-meta">
+                                 <ul>
+                                    <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 AM</li>
+                                    <li class="item-cat"><i class="fa fa-glass"></i> <a href="#">Restaurant</a> , <a href="#">Cafe</a></li>
+                                    <li class="item-location"><a href="#"><i class="fa fa-map-marker"></i> Buffalo </a></li>
+                                    <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="item">
+                           <div class="item-ads-grid icon-blue">
+                              <div class="item-img-grid">
+                                 <img alt="" src="images/categories/restaurant/3.png" class="img-responsive img-center">
+                                 <div class="item-title">
+                                    <a href="single.html">
+                                       <h4>There are many variations</h4>
+                                    </a>
+                                    <h3>$ 64.5000</h3>
+                                 </div>
+                              </div>
+                              <div class="item-meta">
+                                 <ul>
+                                    <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 AM</li>
+                                    <li class="item-cat"><i class="fa fa-glass"></i> <a href="#">Restaurant</a> , <a href="#">Cafe</a></li>
+                                    <li class="item-location"><a href="#"><i class="fa fa-map-marker"></i> Buffalo </a></li>
+                                    <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="item">
+                           <div class="item-ads-grid icon-blue">
+                              <div class="item-img-grid">
+                                 <img alt="" src="images/categories/restaurant/4.png" class="img-responsive img-center">
+                                 <div class="item-title">
+                                    <a href="single.html">
+                                       <h4>There are many variations</h4>
+                                    </a>
+                                    <h3>$ 64.5000</h3>
+                                 </div>
+                              </div>
+                              <div class="item-meta">
+                                 <ul>
+                                    <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 AM</li>
+                                    <li class="item-cat"><i class="fa fa-glass"></i> <a href="#">Restaurant</a> , <a href="#">Cafe</a></li>
+                                    <li class="item-location"><a href="#"><i class="fa fa-map-marker"></i> Buffalo </a></li>
+                                    <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
+                                 </ul>
                               </div>
                            </div>
                         </div>
@@ -216,7 +290,8 @@ var axios = require("axios");
 export default {
   data: function() {
     return {
-      category: {},
+      receipts: [],
+      categories: [],
       searchFilter: "",
       categoryUser: [],
       newSpendingCap: ""
@@ -226,13 +301,13 @@ export default {
     axios.get("http://localhost:3000/api/categories/").then(
       function(response) {
         console.log(response.data);
-        this.category = response.data;
+        this.categories = response.data.name;
       }.bind(this)
     );
     axios.get("http://localhost:3000/api/receipts/").then(
       function(response) {
         console.log(response.data);
-        this.category.receipts = response.data;
+        this.receipts = response.data;
       }.bind(this)
     );
   },
