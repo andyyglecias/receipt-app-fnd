@@ -157,12 +157,12 @@
     <!-- Categories List Page -->
       <section class="categories-list main-categories-list">
          <div class="container">
-            <div id="Restaurant" class="row">
+            <div v-for="category in categoriesWithReceipts" class="row">
                <div class="col-lg-3 col-md-3 col-sm-3">
                   <div class="widget blue-widget">
                      <div class="widget-header">
                         <small>98,156 Ads</small>
-                        <h1><i class="fa fa-glass shortcut-icon icon-blue"></i> Restaurant</h1>
+                        <h1><i class="fa fa-glass shortcut-icon icon-blue"></i>{{ category.name }}</h1>
                      </div>
                      <div class="widget-body">
                         <ul class="trends">
@@ -180,7 +180,10 @@
                   </div>
                </div>
                <div class="col-lg-9 col-md-9 col-sm-9">
-                  <div class="single-categorie">
+                <div v-for="receipt in category.receipts">
+                  hi
+                </div>
+                  <!-- <div class="single-categorie">
                      <div id="owl-carousel-featured" class="owl-carousel categories-list-page">
                         <div class="item">
                            <div class="item-ads-grid icon-blue">
@@ -203,71 +206,8 @@
                               </div>
                            </div>
                         </div>
-                        <div class="item">
-                           <div class="item-ads-grid icon-blue">
-                              <div class="item-img-grid">
-                                 <img alt="" src="images/categories/restaurant/2.png" class="img-responsive img-center">
-                                 <div class="item-title">
-                                    <a href="single.html">
-                                       <h4>There are many variations</h4>
-                                    </a>
-                                    <h3>$ 64.5000</h3>
-                                 </div>
-                              </div>
-                              <div class="item-meta">
-                                 <ul>
-                                    <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 AM</li>
-                                    <li class="item-cat"><i class="fa fa-glass"></i> <a href="#">Restaurant</a> , <a href="#">Cafe</a></li>
-                                    <li class="item-location"><a href="#"><i class="fa fa-map-marker"></i> Buffalo </a></li>
-                                    <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="item">
-                           <div class="item-ads-grid icon-blue">
-                              <div class="item-img-grid">
-                                 <img alt="" src="images/categories/restaurant/3.png" class="img-responsive img-center">
-                                 <div class="item-title">
-                                    <a href="single.html">
-                                       <h4>There are many variations</h4>
-                                    </a>
-                                    <h3>$ 64.5000</h3>
-                                 </div>
-                              </div>
-                              <div class="item-meta">
-                                 <ul>
-                                    <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 AM</li>
-                                    <li class="item-cat"><i class="fa fa-glass"></i> <a href="#">Restaurant</a> , <a href="#">Cafe</a></li>
-                                    <li class="item-location"><a href="#"><i class="fa fa-map-marker"></i> Buffalo </a></li>
-                                    <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="item">
-                           <div class="item-ads-grid icon-blue">
-                              <div class="item-img-grid">
-                                 <img alt="" src="images/categories/restaurant/4.png" class="img-responsive img-center">
-                                 <div class="item-title">
-                                    <a href="single.html">
-                                       <h4>There are many variations</h4>
-                                    </a>
-                                    <h3>$ 64.5000</h3>
-                                 </div>
-                              </div>
-                              <div class="item-meta">
-                                 <ul>
-                                    <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 AM</li>
-                                    <li class="item-cat"><i class="fa fa-glass"></i> <a href="#">Restaurant</a> , <a href="#">Cafe</a></li>
-                                    <li class="item-location"><a href="#"><i class="fa fa-map-marker"></i> Buffalo </a></li>
-                                    <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </div>
                      </div>
-                  </div>
+                  </div> -->
                </div>
             </div>
          </div>
@@ -292,6 +232,7 @@ export default {
     return {
       receipts: [],
       categories: [],
+      categoriesWithReceipts: [],
       searchFilter: "",
       categoryUser: [],
       newSpendingCap: ""
@@ -300,21 +241,41 @@ export default {
   created: function() {
     axios.get("http://localhost:3000/api/categories/").then(
       function(response) {
-        console.log(response.data);
         this.categories = response.data.name;
+        console.log(this.categories);
       }.bind(this)
     );
     axios.get("http://localhost:3000/api/receipts/").then(
       function(response) {
         console.log(response.data);
         this.receipts = response.data;
+        this.categoryReceipts()
+        console.log(this.categories, "code")
       }.bind(this)
     );
   },
   methods: {
+    categoryReceipts: function() {
+      for(var i = 0; i < this.categories.length; i += 1) {
+          this.categories[i].receipts = [];
+        for(var j = 0; j < this.receipts.length; j += 1) {
+          if (this.categories[i].id === this.receipts[j].id) {
+            this.categories[i].receipts.push(this.receipts[j])
+          }
+        }
+      }
+    }
     
   },
-  
+  watch: {
+    categories: {
+      handler: function(newValue) {
+        console.log(newValue, "newValue");
+        this.categoriesWithReceipts = newValue;
+      },
+      deep: true
+    }
+  }, 
   computed: {}
 };
 </script>
