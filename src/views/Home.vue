@@ -157,7 +157,7 @@
     <!-- Categories List Page -->
       <section class="categories-list main-categories-list">
          <div class="container">
-            <div v-for="category in categoriesWithReceipts" class="row">
+            <div v-for="category in categories" class="row">
                <div class="col-lg-3 col-md-3 col-sm-3">
                   <div class="widget blue-widget">
                      <div class="widget-header">
@@ -166,25 +166,14 @@
                      </div>
                      <div class="widget-body">
                         <ul class="trends">
-                           <li><a href="#">Cafe <span class="item-numbers">155</span></a></li>
-                           <li><a href="#">Fast Food <span class="item-numbers">80</span></a></li>
-                           <li><a href="#">Restaurants <span class="item-numbers">65</span></a></li>
-                           <li><a href="#">Pubs <span class="item-numbers">35</span></a></li>
-                           <li><a href="#">Food Truck <span class="item-numbers">12</span></a></li>
-                           <li><a href="#">Cafe <span class="item-numbers">155</span></a></li>
-                           <li><a href="#">Pubs <span class="item-numbers">35</span></a></li>
-                           <li><a href="#">Food Truck <span class="item-numbers">12</span></a></li>
-                           <li><a href="#">Show More <span class="item-numbers">7</span></a></li>
+                           <li><a href="#"><span class="item-numbers">155</span></a></li>
                         </ul>
                      </div>
                   </div>
                </div>
                <div class="col-lg-9 col-md-9 col-sm-9">
-                <div v-for="receipt in category.receipts">
-                  hi
-                </div>
-                  <!-- <div class="single-categorie">
-                     <div id="owl-carousel-featured" class="owl-carousel categories-list-page">
+                  <div class="single-categorie">
+                     <div id="owl-carousel-featured" style="display: flex" class="owl-carousel categories-list-page">
                         <div class="item">
                            <div class="item-ads-grid icon-blue">
                               <div class="item-img-grid">
@@ -206,8 +195,71 @@
                               </div>
                            </div>
                         </div>
+                        <div class="item">
+                           <div class="item-ads-grid icon-blue">
+                              <div class="item-img-grid">
+                                 <img alt="" src="images/categories/restaurant/2.png" class="img-responsive img-center">
+                                 <div class="item-title">
+                                    <a href="single.html">
+                                       <h4>There are many variations</h4>
+                                    </a>
+                                    <h3>$ 64.5000</h3>
+                                 </div>
+                              </div>
+                              <div class="item-meta">
+                                 <ul>
+                                    <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 AM</li>
+                                    <li class="item-cat"><i class="fa fa-glass"></i> <a href="#">Restaurant</a> , <a href="#">Cafe</a></li>
+                                    <li class="item-location"><a href="#"><i class="fa fa-map-marker"></i> Buffalo </a></li>
+                                    <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="item">
+                           <div class="item-ads-grid icon-blue">
+                              <div class="item-img-grid">
+                                 <img alt="" src="images/categories/restaurant/3.png" class="img-responsive img-center">
+                                 <div class="item-title">
+                                    <a href="single.html">
+                                       <h4>There are many variations</h4>
+                                    </a>
+                                    <h3>$ 64.5000</h3>
+                                 </div>
+                              </div>
+                              <div class="item-meta">
+                                 <ul>
+                                    <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 AM</li>
+                                    <li class="item-cat"><i class="fa fa-glass"></i> <a href="#">Restaurant</a> , <a href="#">Cafe</a></li>
+                                    <li class="item-location"><a href="#"><i class="fa fa-map-marker"></i> Buffalo </a></li>
+                                    <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="item">
+                           <div class="item-ads-grid icon-blue">
+                              <div class="item-img-grid">
+                                 <img alt="" src="images/categories/restaurant/4.png" class="img-responsive img-center">
+                                 <div class="item-title">
+                                    <a href="single.html">
+                                       <h4>There are many variations</h4>
+                                    </a>
+                                    <h3>$ 64.5000</h3>
+                                 </div>
+                              </div>
+                              <div class="item-meta">
+                                 <ul>
+                                    <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 AM</li>
+                                    <li class="item-cat"><i class="fa fa-glass"></i> <a href="#">Restaurant</a> , <a href="#">Cafe</a></li>
+                                    <li class="item-location"><a href="#"><i class="fa fa-map-marker"></i> Buffalo </a></li>
+                                    <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
                      </div>
-                  </div> -->
+                  </div> 
                </div>
             </div>
          </div>
