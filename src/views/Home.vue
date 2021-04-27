@@ -157,95 +157,33 @@
     <!-- Categories List Page -->
       <section class="categories-list main-categories-list">
          <div class="container">
-            <div v-for="category in categories" class="row">
+            <div v-for="category in categoryReceipts" id="Restaurant" class="row">
                <div class="col-lg-3 col-md-3 col-sm-3">
                   <div class="widget blue-widget">
                      <div class="widget-header">
                         <small>98,156 Ads</small>
                         <h1><i class="fa fa-glass shortcut-icon icon-blue"></i>{{ category.name }}</h1>
+                        <h1>You have {{ category.receipts.length }} total receipts</h1>
                      </div>
                      <div class="widget-body">
                         <ul class="trends">
-                           <li><a href="#"><span class="item-numbers">155</span></a></li>
+                           <li><a href="#"><span class="item-numbers"> </span></a></li>
                         </ul>
                      </div>
                   </div>
                </div>
                <div class="col-lg-9 col-md-9 col-sm-9">
                   <div class="single-categorie">
-                     <div id="owl-carousel-featured" style="display: flex" class="owl-carousel categories-list-page">
-                        <div class="item">
+                     <div id="owl-carousel-featured" style="display: flex; opacity: 1" class="owl-carousel categories-list-page">
+                        <div v-for="receipt in category.receipts" class="item">
                            <div class="item-ads-grid icon-blue">
                               <div class="item-img-grid">
-                                 <img alt="" src="images/categories/restaurant/1.png" class="img-responsive img-center">
+                                 <img alt="" v-bind:src="receipt.image" class="img-responsive img-center">
                                  <div class="item-title">
                                     <a href="single.html">
-                                       <h4>There are many variations</h4>
+                                       <h4>{{ receipt.merchant }}</h4>
                                     </a>
-                                    <h3>$ 64.5000</h3>
-                                 </div>
-                              </div>
-                              <div class="item-meta">
-                                 <ul>
-                                    <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 AM</li>
-                                    <li class="item-cat"><i class="fa fa-glass"></i> <a href="#">Restaurant</a> , <a href="#">Cafe</a></li>
-                                    <li class="item-location"><a href="#"><i class="fa fa-map-marker"></i> Buffalo </a></li>
-                                    <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="item">
-                           <div class="item-ads-grid icon-blue">
-                              <div class="item-img-grid">
-                                 <img alt="" src="images/categories/restaurant/2.png" class="img-responsive img-center">
-                                 <div class="item-title">
-                                    <a href="single.html">
-                                       <h4>There are many variations</h4>
-                                    </a>
-                                    <h3>$ 64.5000</h3>
-                                 </div>
-                              </div>
-                              <div class="item-meta">
-                                 <ul>
-                                    <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 AM</li>
-                                    <li class="item-cat"><i class="fa fa-glass"></i> <a href="#">Restaurant</a> , <a href="#">Cafe</a></li>
-                                    <li class="item-location"><a href="#"><i class="fa fa-map-marker"></i> Buffalo </a></li>
-                                    <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="item">
-                           <div class="item-ads-grid icon-blue">
-                              <div class="item-img-grid">
-                                 <img alt="" src="images/categories/restaurant/3.png" class="img-responsive img-center">
-                                 <div class="item-title">
-                                    <a href="single.html">
-                                       <h4>There are many variations</h4>
-                                    </a>
-                                    <h3>$ 64.5000</h3>
-                                 </div>
-                              </div>
-                              <div class="item-meta">
-                                 <ul>
-                                    <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 AM</li>
-                                    <li class="item-cat"><i class="fa fa-glass"></i> <a href="#">Restaurant</a> , <a href="#">Cafe</a></li>
-                                    <li class="item-location"><a href="#"><i class="fa fa-map-marker"></i> Buffalo </a></li>
-                                    <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="item">
-                           <div class="item-ads-grid icon-blue">
-                              <div class="item-img-grid">
-                                 <img alt="" src="images/categories/restaurant/4.png" class="img-responsive img-center">
-                                 <div class="item-title">
-                                    <a href="single.html">
-                                       <h4>There are many variations</h4>
-                                    </a>
-                                    <h3>$ 64.5000</h3>
+                                    <h3> ${{ receipt.price }}</h3>
                                  </div>
                               </div>
                               <div class="item-meta">
@@ -301,21 +239,25 @@ export default {
       function(response) {
         console.log(response.data);
         this.receipts = response.data;
-        this.categoryReceipts()
+        // this.categoryReceipts()
         console.log(this.categories, "code")
       }.bind(this)
     );
   },
-  methods: {
+  computed: {
     categoryReceipts: function() {
-      for(var i = 0; i < this.categories.length; i += 1) {
-          this.categories[i].receipts = [];
-        for(var j = 0; j < this.receipts.length; j += 1) {
-          if (this.categories[i].id === this.receipts[j].id) {
-            this.categories[i].receipts.push(this.receipts[j])
+      const categories = this.categories;
+      const receipts = this.receipts;
+      for(var i = 0; i < categories.length; i += 1) {
+          categories[i].receipts = [];
+        for(var j = 0; j < receipts.length; j += 1) {
+          if (categories[i].id === receipts[j].id) {
+            categories[i].receipts.push(receipts[j])
           }
         }
       }
+      console.log(categories);
+      return categories;
     }
     
   },
@@ -328,6 +270,6 @@ export default {
       deep: true
     }
   }, 
-  computed: {}
+  // computed: {}
 };
 </script>
