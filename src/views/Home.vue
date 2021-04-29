@@ -226,13 +226,13 @@ export default {
     };
   },
   created: function() {
-    axios.get("http://localhost:3000/api/categories/").then(
+    axios.get("/api/categories/").then(
       function(response) {
         this.categories = response.data.name;
         console.log(this.categories);
       }.bind(this)
     );
-    axios.get("http://localhost:3000/api/receipts/").then(
+    axios.get("/api/receipts/").then(
       function(response) {
         console.log(response.data);
         this.receipts = response.data;
