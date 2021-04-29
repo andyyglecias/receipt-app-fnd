@@ -1,8 +1,5 @@
 <template>
   <div class="home">
-    <!-- Preloder -->
-    <div id="preloader"></div>
-      <!-- End Preloder -->
       <!-- Categories Page Search-->
       <section class="categories-page-search">
          <div class="container">
@@ -163,7 +160,7 @@
                      <div class="widget-header">
                         <small>98,156 Ads</small>
                         <h1><i class="fa fa-glass shortcut-icon icon-blue"></i>{{ category.name }}</h1>
-                        <h1>You have {{ category.receipts.length }} total receipts</h1>
+                        <h1>You have {{ category.receipts.length }} total receip</h1>
                      </div>
                      <div class="widget-body">
                         <ul class="trends">
@@ -174,7 +171,7 @@
                </div>
                <div class="col-lg-9 col-md-9 col-sm-9">
                   <div class="single-categorie">
-                     <div id="owl-carousel-featured" style="display: flex; opacity: 1" class="owl-carousel categories-list-page">
+                     <div id="owl-carousel-featured" style="display: flex" class="owl-carousel categories-list-page owl-theme">
                         <div v-for="receipt in category.receipts" class="item">
                            <div class="item-ads-grid icon-blue">
                               <div class="item-img-grid">

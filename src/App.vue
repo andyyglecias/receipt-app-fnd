@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <!-- Navbar -->
+      <!-- Preloder -->
+      <div id="preloader"></div>
+      <!-- End Preloder -->
+      <!-- Navbar -->
       <nav class="navbar top-navbar" role="navigation">
          <div class="container">
             <div class="navbar-header col-sm-2">
@@ -79,8 +82,8 @@
          </div>
       </nav>
       <!-- End Navbar -->
-    <router-view/>
-    <!-- Footer -->
+      <router-view />
+      <!-- Footer -->
       <footer>
          <section class="footer-Content">
             <div class="container">
@@ -178,24 +181,4 @@
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
