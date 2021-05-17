@@ -109,44 +109,6 @@
                   </form>
                </div>
             </div>
-            <div class="row">
-               <!-- Categories Page Nav -->
-               <div class="all-categories-nav">
-                  <a href="#Restaurant">
-                     <i class="fa fa-glass shortcut-icon icon-blue"></i> 
-                     <p>Restaurant <small>5,56 Ads</small></p>
-                  </a>
-                  <a href="#Real_Estate">
-                     <i class="fa fa-home shortcut-icon icon-green"></i> 
-                     <p>Real Estate <small>9,156 Ads</small></p>
-                  </a>
-                  <a href="#Cars">
-                     <i class="fa fa-car shortcut-icon icon-brown"></i> 
-                     <p>Cars <small>6,16 Ads</small></p>
-                  </a>
-                  <a href="#Shopping">
-                     <i class="fa fa-shopping-cart shortcut-icon icon-violet"></i> 
-                     <p>Shopping <small>98,156 Ads</small></p>
-                  </a>
-                  <a href="#Job">
-                     <i class="fa fa-briefcase shortcut-icon icon-dark-blue"></i> 
-                     <p>Job <small>9,16 Ads</small></p>
-                  </a>
-                  <a href="#Hotels">
-                     <i class="fa fa-building-o shortcut-icon icon-orange"></i> 
-                     <p>Hotels <small>6,56 Ads</small></p>
-                  </a>
-                  <a href="#Services">
-                     <i class="fa fa-star shortcut-icon icon-light-blue"></i> 
-                     <p>Services <small>2,156 Ads</small></p>
-                  </a>
-                  <a href="#Pets">
-                     <i class="fa fa-paw shortcut-icon icon-light-green"></i> 
-                     <p>Pets <small>9,156 Ads</small></p>
-                  </a>
-               </div>
-               <!-- End Categories Page Nav -->
-            </div>
          </div>
       </section>
       <!-- End Categories Page Search-->
@@ -158,9 +120,8 @@
                <div class="col-lg-3 col-md-3 col-sm-3">
                   <div class="widget blue-widget">
                      <div class="widget-header">
-                        <small>98,156 Ads</small>
-                        <h1><i class="fa fa-glass shortcut-icon icon-blue"></i>{{ category.name }}</h1>
-                        <h1>You have {{ category.receipts.length }} total receip</h1>
+                        <h1><i class="fal fa-receipt shortcut-icon icon-blue"></i>{{ category.name }}</h1>
+                        <h1>You have {{ category.receipts.length }} total receipts</h1>
                      </div>
                      <div class="widget-body">
                         <ul class="trends">
@@ -182,14 +143,6 @@
                                     </a>
                                     <h3> ${{ receipt.price }}</h3>
                                  </div>
-                              </div>
-                              <div class="item-meta">
-                                 <ul>
-                                    <li class="item-date"><i class="fa fa-clock-o"></i> Today 10.35 AM</li>
-                                    <li class="item-cat"><i class="fa fa-glass"></i> <a href="#">Restaurant</a> , <a href="#">Cafe</a></li>
-                                    <li class="item-location"><a href="#"><i class="fa fa-map-marker"></i> Buffalo </a></li>
-                                    <li class="item-type"><i class="fa fa-bookmark"></i> New</li>
-                                 </ul>
                               </div>
                            </div>
                         </div>
@@ -221,18 +174,17 @@ export default {
       categories: [],
       categoriesWithReceipts: [],
       searchFilter: "",
-      categoryUser: [],
       newSpendingCap: ""
     };
   },
   created: function() {
-    axios.get("/api/categories/").then(
+    axios.get("http://localhost:3000/api/categories/").then(
       function(response) {
         this.categories = response.data.name;
         console.log(this.categories);
       }.bind(this)
     );
-    axios.get("/api/receipts/").then(
+    axios.get("http://localhost:3000/api/receipts/").then(
       function(response) {
         console.log(response.data);
         this.receipts = response.data;

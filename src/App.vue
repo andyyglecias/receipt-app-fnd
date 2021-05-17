@@ -13,7 +13,7 @@
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>
                </button>
-               <a class="navbar-brand" href="index.html"><img alt="logo" src="images/logo.png" ></a>
+               <a class="navbar-brand" href="index.html"><img alt="logo" src="https://img-premium.flaticon.com/png/512/3734/3734708.png?token=exp=1621286850~hmac=b64b596f92f407b995d7dbde0c469b98" ></a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                <ul class="nav navbar-nav">
